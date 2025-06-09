@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trash Scan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet"/>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center py-3">
+        <h3 class="fw-bold">Trash<span class="text-danger">Scan</span></h3>
+        <div class="fs-5">
+          <!-- <i class="bi bi-file-earmark-arrow-up mx-2"></i> -->
+          <a href="#scan" class="text-reset text-decoration-none">
+            <i class="bi bi-camera mx-2"></i>
+          </a>
+          
+          <a href="#article" class="text-reset text-decoration-none">
+            <i class="bi bi-journal-text mx-2"></i>
+          </a>
+
+          <a href="#location" class="text-reset text-decoration-none">
+            <i class="bi bi-geo-fill mx-2"></i>
+          </a>
+          
+        </div>
+
+      </div>
+
+      <!-- Hero Section -->
+      <div class="hero-section text-center">
+        <h1>Yuk, Upload Sampahmu!</h1>
+        <a href="#scan" class="text-reset text-decoration-none">
+          <button class="btn btn-scan mt-3">TrashScan</button>
+        </a>
+      </div>
+
+      <!-- Features Section -->
+      <div class="mt-5">
+        <h4>Layanan</h4>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="bg-primary text-white feature-box">
+              <div class="feature-icon">🤖🧾</div>
+              <h5 class="mt-2">Identifikasi Sampah Lebih Mudah</h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="bg-info text-white feature-box">
+              <div class="feature-icon">📚🧠</div>
+              <h5 class="mt-2">Artikel Edukasi</h5>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="bg-warning text-dark feature-box">
+              <div class="feature-icon">📍🌱</div>
+              <h5 class="mt-2">Rekomendasi Lokasi Daur Ulang</h5>
+              <!-- <p class="small">Kenali jenis sampah hanya dalam hitungan detik!</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Scan Result Section -->
+      <div class="result-box" id="scan">
+        <h4>Upload Gambar 📁!</h4>
+        <div class="row mt-3">
+          <div class="col-md-4">
+            <!-- <label for="upload" class="form-label">Choose File</label> -->
+            <input type="file" class="form-control" id="upload" />
+            <button class="btn btn-light mt-2 w-100" onclick="uploadImage()">Upload</button>
+            <img id="previewImage" src="" class="img-fluid mt-3 rounded" style="display:none;" />
+          </div>
+          <div class="col-md-8" id="hasilContainer" style="display: none">
+            <h5>Detail Hasil</h5>
+            <div class="bg-light text-dark p-3 rounded mt-2">
+              <p><strong>Jenis:</strong> <span id="hasilJenis">-</span></p>
+              <!-- <p><strong>Persentase:</strong> <span id="hasilPersentase">-</span></p> -->
+              <!-- <p><strong>Pengelolaan:</strong> <span id="hasilPengolahan">-</span></p> -->
+              <p><strong>Penjelasan & Rekomendasi Pengolahan:</strong> <span id="hasilPenjelasan">-</span></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Education Section -->
+      <div class="section-title" id="article">
+        <h4>Artikel Edukasi</h4>
+      </div>
+      <!-- Artikel 1 -->
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm">
+            <img src="https://mmc.tirto.id/image/otf/970x0/2022/03/18/antarafoto-pengolahan-sampah-17032022-pc-4_ratio-16x9.jpg" class="card-img-top" alt="Article" />
+            <div class="card-body">
+              <h5 class="card-title"><a href="https://tirto.id/pengertian-4r-dan-contohnya-dalam-pengelolaan-sampah-gSZL" class="text-decoration-none text-black">Pengertian 4R dan Contohnya dalam Pengelolaan Sampah</a></h5>
+              <p class="card-text">Baca Lebih Lanjut!</p>
+            </div>
+          </div>
+        </div>
+        <!-- Artikel 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm">
+            <img src="https://cdn-green.katadata.co.id/media/images/2023/cara_pengolahan_sampah_organik_di_rumah_2025_02_19_02_54_15.png" class="card-img-top" alt="Article" />
+            <div class="card-body">
+              <h5 class="card-title"><a href="https://green.katadata.co.id/berita/67b58fef81d64/9-cara-pengolahan-sampah-organik-di-rumah-yang-mudah-dilakukan" class="text-decoration-none text-black">9 Cara Pengolahan Sampah Organik di Rumah yang Mudah Dilakukan</a></h5>
+              <p class="card-text">Baca lebih lanjut!</p>
+            </div>
+          </div>
+        </div>
+        <!-- Artikel 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm">
+            <img src="https://octopus.co.id/wp-content/uploads/2025/02/Pengelolaan-Sampah-Pengertian-Prinsip-dan-Dampak-1024x585.jpg" class="card-img-top" alt="Article" />
+            <div class="card-body">
+              <h5 class="card-title"><a href="https://octopus.co.id/pengelolaan-sampah-pengertian-prinsip-dan-dampak/" class="text-decoration-none text-black">Pengelolaan Sampah: Pengertian, Prinsip, dan Dampak</a></h5>
+              <p class="card-text">Baca Lebih Lanjut!</p>
+            </div>
+          </div>
+        </div>
+        <!-- Artikel 4 -->
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm">
+            <img src="https://ik.imagekit.io/goodid/gnfi/uploads/articles/large-pengertian-jenis-dan-pengelolaan-sampah-di-indonesia-xzii5PSjfL.jpeg?tr=w-730,h-486,fo-center" class="card-img-top" alt="Article" />
+            <div class="card-body">
+              <h5 class="card-title"><a href="https://www.goodnewsfromindonesia.id/2024/08/13/pengertian-jenis-dan-pengelolaan-sampah-di-indonesia" class="text-decoration-none text-black">Pengertian, Jenis dan Pengelolaan Sampah di Indonesia</a></h5>
+              <p class="card-text">Baca Lebih Lanjut!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Artikel 5 -->
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm">
+            <img src="https://impactlabs.id/wp-content/uploads/2024/11/pexels-julia-m-cameron-6995365-1024x683.jpg" class="card-img-top" alt="Article" />
+            <div class="card-body">
+              <h5 class="card-title"><a href="https://impactlabs.id/2024/11/29/sampah-rumah-tangga-cara-efektif-memilah-dan-mengolah/" class="text-decoration-none text-black">Sampah Rumah Tangga : Cara Efektif Memilah dan Mengolah</a></h5>
+              <p class="card-text">Baca Lebih Lanjut!</p>
+            </div>
+          </div>
+        </div>
+        <!-- Artikel 6 -->
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm">
+            <img src="https://asset.kompas.com/crops/fFpF-YiFZXeatjV0lm9cVouUsp8=/0x44:2245x1541/1200x800/data/photo/2022/11/15/63731fe84ee03.jpg" class="card-img-top" alt="Article" />
+            <div class="card-body">
+              <h5 class="card-title"><a href="https://lestari.kompas.com/read/2023/05/01/160000586/perbedaan-sampah-organik-dan-anorganik-serta-cara-mengolahnya" class="text-decoration-none text-black">Perbedaan Sampah Organik dan Anorganik serta Cara Mengolahnya</a></h5>
+              <p class="card-text">Baca Lebih Lanjut!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Maps Section -->
+      <div class="section-title" id="location">
+        <h4>Temukan Lokasi Daur Ulang</h4>
+      </div>
+      <div class="row pb-5">
+        <div class="col-md-4">
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a
+                href="https://www.google.com/maps/place/Daur+Ulang+Gemilang/@3.6303757,98.5578829,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x303131d5c8c81969:0x5cb232f4aeac688a!2sDaur+Ulang+Lestarindo!8m2!3d3.561548!4d98.6691918!16s%2Fg%2F11kjf2qv47!3m5!1s0x30312b9d838bfa07:0xfa3a49a3a0fe5dfe!8m2!3d3.6303757!4d98.5604578!16s%2Fg%2F11fhr04yp0?hl=id&entry=ttu&g_ep=EgoyMDI1MDYwMS4wIKXMDSoASAFQAw%3D%3D"
+                style="text-decoration: none; color: inherit"
+                >Daur Ulang Gemilang</a
+              >
+              <span class="badge bg-primary rounded-pill">4.8★</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a
+                href="https://www.google.com/maps/place/BANK+SAMPAH+ANYELIR/@3.614713,98.662142,11z/data=!4m6!3m5!1s0x3031314dbe2ba90d:0xa162db8971a8843!8m2!3d3.5435187!4d98.6939405!16s%2Fg%2F11h7t0sjqy?hl=id&entry=ttu&g_ep=EgoyMDI1MDYwMS4wIKXMDSoASAFQAw%3D%3D"
+                style="text-decoration: none; color: inherit"
+              >
+                Sampah Anyelir</a
+              >
+
+              <span class="badge bg-success rounded-pill">4.5★</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a
+                href="https://www.google.com/maps/place/Pusat+Daur+Ulang+Medan/@3.590959,98.7024577,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x3031314dbe2ba90d:0xa162db8971a8843!2sBANK+SAMPAH+ANYELIR!8m2!3d3.5435187!4d98.6939405!16s%2Fg%2F11h7t0sjqy!3m5!1s0x3031310811a06199:0xbb6d6e83846d9055!8m2!3d3.590959!4d98.7050326!16s%2Fg%2F11c6ltq56h?hl=id&entry=ttu&g_ep=EgoyMDI1MDYwMS4wIKXMDSoASAFQAw%3D%3D"
+                style="text-decoration: none; color: inherit"
+                >Pusat Daur Ulang Medan</a
+              >
+              <span class="badge bg-warning rounded-pill">4.2★</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-8">
+          <div class="ratio ratio-16x9 rounded shadow" style="overflow: hidden">
+            <iframe src="https://www.google.com/maps?q=recycling+center+near+medan+indonesia&output=embed" width="100%" height="450" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="d-flex justify-content-between align-items-center py-3 px-3 border-top">
+      <div>
+        <h5 class="fw-bold my-2">Trash<span class="text-danger">Scan</span></h5>
+      </div>
+      <div class="text-muted small">© 2025 TrashScan. All rights reserved.</div>
+      <p class="mb-0 d-flex align-items-center">
+        Developed by Group CC25-CR375&nbsp;|
+        <a href="https://github.com/sabinawrim" target="_blank" class="text-decoration-none mx-2" aria-label="GitHub"> <i class="bi bi-github" style="font-size: 1.2rem; color: #181717"></i> </a>|
+        <a href="mailto:sabinawardaniah@gmail.com" class="text-decoration-none mx-2" aria-label="Email">
+          <i class="bi bi-envelope-fill" style="font-size: 1.2rem; color: #181717""></i>
+        </a>
+      </p>
+    </footer>
+    <!-- END FOOTER -->
+
+    <!-- CLIENT SIDE UNTUK INTERAKSI KE BACKEND -->
+    <script>
+      function uploadImage() {
+        const input = document.getElementById("upload");
+        const file = input.files[0];
+        if (!file) {
+          alert("Pilih file gambar terlebih dahulu.");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("image", file);
+
+        // tampilkan preview gambar
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const img = document.getElementById("previewImage");
+          img.src = e.target.result;
+          img.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+
+        fetch("http://127.0.0.1:5000/detect_trash", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("hasilJenis").innerText = data.jenis_sampah;
+            // document.getElementById("hasilPengolahan").innerText = data.pengolahan;
+            // document.getElementById("hasilPersentase").innerText = (data.persentase || "N/A");
+            document.getElementById("hasilPenjelasan").innerText = data.penjelasan_gemini;
+
+            document.getElementById("hasilContainer").style.display = "block";
+          })
+          .catch((error) => {
+            alert("Terjadi kesalahan: " + error);
+          });
+      }
+    </script>
+    <!-- END CLIENT SIDE UNTUK INTERAKSI KE BACKEND -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+  </body>
+</html>
