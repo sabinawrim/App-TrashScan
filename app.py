@@ -21,7 +21,7 @@ genai.configure(api_key="AIzaSyC2txHOmdTwi0hE12XkalNd7hK-SpFe4Fk")
 model = load_model('model/model.h5')
 
 app = Flask(__name__)
-# CORS(app)  # agar bisa diakses dari frontend lokal
+CORS(app)  # agar bisa diakses dari frontend lokal
 
 @app.route('/')
 def index():
